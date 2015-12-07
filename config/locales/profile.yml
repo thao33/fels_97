@@ -1,0 +1,8 @@
+en:
+  profile:
+    title:
+      following: "Following"
+      followers: "Followers"
+    button:
+      follow: "Follow"
+      unfollow: "Unfollow"

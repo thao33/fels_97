@@ -1,36 +1,12 @@
 <% provide(:title, @user.name) %>
 <section>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <table style="width:100%">
-        <%= image_tag @user.avatar %>
-        <tr>
-          <td><%=I18n.t "edit.name" %></td>
-          <td><%= @user.name %></td>
-        </tr>
-        <tr>
-          <td><%=I18n.t "edit.email"%></td>
-          <td><%= @user.email %></td>
-        </tr>
-        <tr>
-          <td><%=I18n.t "edit.following"%></td>
-          <td><%=I18n.t "edit.dratf1"%></td>
-        </tr>
-        <tr>
-          <td><%=I18n.t "edit.followers"%></td>
-          <td><%=I18n.t "edit.dratf2"%></td>
-        </tr>
-        <tr>
-          <td><%=I18n.t "edit.learned"%></td>
-          <td><%=I18n.t "edit.dratf3"%></td>
-        </tr>
-        <tr>
-          <td><%=I18n.t "edit.recently"%></td>
-          <td><%=I18n.t "edit.dratf4"%></td>
-        </tr>
-      </table>
-    </section>
-  </aside>
-</div>
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render "users/user" %>
+    </div>
+    <div class="col-xs-9">
+      <h3>All activities</h3>
+      <%= render "users/activities" %>
+    </div>
+  </div>
 </section>

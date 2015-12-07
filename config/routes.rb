@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   get    'logout'  => 'sessions#destroy'
-  resources :users
+  resources :users do
+    get "followings" => "relationships#index", defaults: {type: "following"}
+    get "followers" => "relationships#index", defaults: {type: "followers"}
+  end
+  resources :relationships, only: [:create, :destroy]
 end
