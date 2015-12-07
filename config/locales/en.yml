@@ -20,4 +20,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  email_password:
+    invalid: "Invalid email/password combination"
+  user_destroy:
+    value: "User deleted"
+  user_create:
+    value: "Welcome to the Framgia Elearning"
+  user_unlogin:
+    warning: "Please log in."
+  sign_up:
+    value: "Sign up now"
+    create: "Create my account"
+  log_in:
+    value: "Log in"  
