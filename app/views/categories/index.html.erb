@@ -1,0 +1,18 @@
+<section>
+  <% @categories.each do |category| %>
+    <div class="row">
+      <h3><%= category.name %></h3>
+      <p><%= category.description %></p>
+      <p>
+        <% category.words.each do |word| %>
+          <%= word.ja %>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="row">
+      <%= button_to "Start", lessons_path, method: :get, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</section>
+
