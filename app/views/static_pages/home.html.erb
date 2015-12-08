@@ -1,7 +1,22 @@
 <section id="lessons">
   <div class="row">
-    <div class="col-md-8 col-md-offset-1">
-      <h3>Lastest lessons here</h3>
+    <div class="col-md-4">
+      <h3>User info</h3>
+    </div>
+    <div class="col-md-8">
+      <div class="row" id="button">
+        <div class="col-md-5 col-md-offset-1">
+          <%= link_to "Words", words_path, class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+        <div class="col-md-5">
+          <%= link_to "Lessons", words_path, class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <h4>Activities</h4>
+        <hr>
+      </div>
     </div>
   </div>
 </section>

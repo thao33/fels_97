@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     get "followers" => "relationships#index", defaults: {type: "followers"}
   end
   resources :relationships, only: [:create, :destroy]
+  resources :words, only: :index
 end

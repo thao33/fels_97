@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   attr_accessor :remember_token
 
   has_many :active_relationship,
@@ -12,14 +14,12 @@ class User < ActiveRecord::Base
 
   has_many :following, through: :active_relationship, source: :followed
   has_many :followers, through: :be_followed, source: :follower
+  has_many :lessons
 
   validates :name,  presence: true, length: { maximum: 50 }
-
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: {maximum: 25},
+  validates :email, presence: true, length: {maximum: 50},
                     format: {with: VALID_EMAIL_REGEX},
                     uniqueness: {case_sensitive: false}
-
   validates :password, length: {minimum: 6}, on: [:create]
   has_attached_file :avatar, styles: {medium: "300x300", thumb: "100x100"},
                      default_url: "/images/:style/missing.png"
@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost

@@ -1,0 +1,23 @@
+<div class="row" id="words">
+  <ul class="col-md-3 col-md-offset-3">
+    <% @word_group1.each do |word| %>
+      <li>
+        <div class="col-md-6"><%= word.ja %></div>
+        <div class="col-md-6"><%= word.correct_answer %></div>
+      </li>
+    <% end %>
+  </ul>
+  <% if @word_group2 %>
+    <ul class="col-md-3">
+      <% @word_group2.each do |word| %>
+        <li>
+          <div class="col-md-6"><%= word.ja %></div>
+          <div class="col-md-6"><%= word.correct_answer %></div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+<div class="row" id="words">
+  <%= will_paginate(@words) %>
+</div>
