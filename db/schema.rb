@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207090516) do
+ActiveRecord::Schema.define(version: 20151208011654) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "lessons", ["category_id"], name: "index_lessons_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +42,18 @@ ActiveRecord::Schema.define(version: 20151207090516) do
     t.string   "remember_digest"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  create_table "words", force: :cascade do |t|
+    t.string   "ja"
+    t.string   "vn"
+    t.integer  "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "words", ["lesson_id"], name: "index_words_on_lesson_id", using: :btree
+
+  add_foreign_key "lessons", "categories"
+  add_foreign_key "words", "lessons"
 end

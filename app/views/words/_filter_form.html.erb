@@ -1,0 +1,18 @@
+<div class="row" id="words">
+  <%= form_for @word, method: :get do |f| %>
+    <div class="row">
+      <%= f.label :category, "Categories" %>
+      <%= f.select :category_id, option_for_category %>
+      <%= f.radio_button :status, Word::READ_WORDS %>
+      <%= f.label :read, "Read" %>
+      <%= f.radio_button :status, Word::UNREAD_WORDS %>
+      <%= f.label :unread, "Unread" %>
+      <%= f.radio_button :status, Word::ALL_WORDS, checked: @word.status_blank? %>
+      <%= f.label :all, "All" %>
+    </div>
+    <br>
+    <div class="row col-md-2 col-md-offset-5">
+      <%= f.submit "Filter", class: 'btn btn-primary btn-block' %>
+    </div>
+  <% end %>
+</div>
