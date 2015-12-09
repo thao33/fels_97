@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  session:
+    log_in: "Log in"
+    sign_up: "Sign up"
+    update: "Update your Profile"
   email_password:
     invalid: "Invalid email/password combination"
   user_destroy:
@@ -31,5 +35,19 @@ en:
   sign_up:
     value: "Sign up now"
     create: "Create my account"
+    confirm: "New user?"
   log_in:
-    value: "Log in"  
+    value: "Log in"
+  submit:
+    save: "save changed"
+  edit:
+    name: "Name"
+    email: "Email"
+    following: "The number of following is"
+    followers: "The number of followers is"
+    learned: "The number of learned words is"
+    recently: "Recently activity"
+    dratf1: "number1"
+    dratf2: "number2"
+    dratf3: "number3"
+    dratf4: "now"
