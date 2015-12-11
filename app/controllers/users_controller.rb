@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find params[:id]
   end
 
   def new
     @user = User.new
   end
-
 
   def destroy
     User.find(params[:id]).destroy
@@ -27,12 +26,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find params[:id] 
+    @user = User.find params[:id]
   end
 
   def update
     @user = User.find params[:id]
-
     if @user.update_attributes! name: params[:user][:name]
       flash[:success] = I18n.t "profile.updated"
       redirect_to @user
@@ -55,8 +53,8 @@ class UsersController < ApplicationController
     end
   end
 
-    def correct_user
-      @user = User.find params[:id]
-      redirect_to root_url  unless current_user? @user
-    end
+  def correct_user
+    @user = User.find params[:id]
+    redirect_to root_url  unless current_user? @user
+  end
 end

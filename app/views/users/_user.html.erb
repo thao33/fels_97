@@ -1,6 +1,34 @@
-<li>
-  <%= gravatar_for user, size: 50 %>
-  <%= link_to user.name, user %>
-  <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
-  <% #end %>
-</li>
+<div class="row">
+  <div class="col-xs-12">
+    <p class="user-info"><%= image_tag @user.avatar %></p>
+    <p><%= @user.name %></p>
+    <div class="row">
+      <div class="stats col-xs-3" id="following"><%= link_to @user.following_count, user_followings_path(@user) %> Following</div>
+      <div id="followers" class="stats col-xs-3"><%= link_to @user.followers_count, user_followers_path(@user) %> Followers</div>
+    </div>
+    <% if logged_in? %>
+      <% unless current_user?(@user) %>
+        <div id="follow_form">
+          <% if current_user.following?(@user) %>
+            <%= render "users/unfollow" %>
+          <% else %>
+            <%= render "users/follow" %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if @follow_rels and @follow_rels.any? %>
+        <div class="row">
+          <p><%= @title %></p>
+          <div class="col-xs-6">
+            <ul>
+            <% @follow_rels.each do |user| %>
+              <li><%= user.name %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
