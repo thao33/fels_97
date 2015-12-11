@@ -60,3 +60,5 @@ en:
       logout: "Logout"
     header:
       title: "Framgia E-learning System"
+  category:
+    start: "start"

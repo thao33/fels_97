@@ -1,0 +1,23 @@
+<div class="container">
+<section>
+  <div class="row">
+    <h1><%= t "categories.all" %></h1>
+    <table class="table table-striped">
+      <tr>
+        <th>#</th>
+        <th><%= t "categories.name" %></th>
+        <th><%= t "categories.description" %></th>
+        <th><%= t "categories.start" %></th>
+      </tr>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.id %></td>
+          <td><h6><%= category.name %></h6></td>
+          <td><%= category.description %></td>
+          <td><%= button_to I18n.t "category.start", lessons_path, class: "button", method: :post %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+</section>

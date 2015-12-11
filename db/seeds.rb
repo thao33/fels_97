@@ -3,14 +3,25 @@
   name = Faker::Name.name
   email = Faker::Internet.email
   password = "secret"
+
   User.create! name: name, email: email, password: password, password_confirmation: password
 end
 
-# Create categories
-categories = ["Basic", "Advance", "On a trip"]
+category_list = [
+  [ "Introduction to Japanese", "This course will take you through the first steps of learning
+     Japanese. We will start off with some common Japanese words in roman letters and then move
+     through the hiragana writing system while practicing some more common words." ],
+  [ "Spanish", "Step 1 in the official beginner's Spanish course, covering both vocabulary
+     and grammar. Learn the words that are used most frequently, and learn to
+     use them in common phrases. " ],
+  [ "French", "The official beginner's French course, covering both vocabulary and grammar.
+     Learn the words that are used most frequently, and learn to use them in common phrases" ],
+  [ "Introductory Mandarin", "This set will give you the foundation you need to be able to
+     communicate in Chinese." ]
+]
 
-categories.each do |category|
-  Category.create! name: category, description: "All about #{category}"
+category_list.each do |name, description|
+  Category.create( name: name, description: description )
 end
 
 # Create lessons
