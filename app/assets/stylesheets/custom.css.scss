@@ -101,7 +101,10 @@ header .intro-text .skills {
 }
 
 section {
-    padding: 80px 0;
+    padding: 100px 0;
+    h3 {
+        text-align: center;
+    }
 }
 
 section h2 {
@@ -166,7 +169,7 @@ footer .footer-below {
 }
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
@@ -261,4 +264,21 @@ p {
 
 .alert-danger {
   margin-top: 80px;
+}
+
+.row {
+    #button {
+        margin-top: 20px;
+    }
+}
+
+#words {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.word-filter {
+  input {
+    width: auto;
+  }
 }
