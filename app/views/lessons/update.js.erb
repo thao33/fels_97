@@ -1,0 +1,15 @@
+$(".result").html("<%= @message %>").delay("<%= LessonWord::DELAY_TIME %>").queue(function(){
+  $(this).html("").dequeue();
+});
+$("#<%= @index %>").addClass("<%= @class %>").delay("<%= LessonWord::DELAY_TIME %>").queue(function(){
+    if ("<%= @show_result %>" == "true") {
+      $('#lesson').html("<%= escape_javascript(render('lessons/result',
+                        {lesson_words: @lesson_words})) %>");
+    } else {
+      $(this).removeClass("<%= @class %>").addClass("btn btn-primary");
+      $(".learning-word > h1").html("<%= @next_word.ja %>");
+      $(".learning-answers").html("<%= escape_javascript(render('lessons/answers',
+        {word: @next_word, word_number: @word_number, words_total: Lesson::QUESTION_BLOCK})) %>");
+    }
+});
+$("#word_number").value("<%= @word_number %>");

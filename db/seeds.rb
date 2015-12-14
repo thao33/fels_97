@@ -24,9 +24,11 @@ categories.each do |category|
 end
 
 # Create words
-words_paragraph = "週明け日の東京商品取引所は、世界的に原油の供給が需要を大幅に上回る状態が続くという見方から先物に売り注文が集まり、原油の先物価格は一時、およそか月ぶりの安値水準まで下落しました。"
+words_paragraph = "週明け日の東京商品取引所は、世界的に原油の供給が需要を大幅に上回る状態が続くという
+                  見方から先物に売り注文が集まり、原油の先物価格は一時、およそか月ぶりの安値水準まで下落しました。"
 words = words_paragraph.split("")
-answers_paragraph = "週明け日の東京商品取引所は、世界的に原油の供給が需要を大幅に上回る状態が続くという見方から先物に売り注文が集まり、原油の先物価格は一時、およか月ぶりの安値水準まで下落しました。"
+answers_paragraph = "週明け日の東京商品取引所は、世界的に原油の供給が需要を大幅に上回る状態が続くという
+                  見方から先物に売り注文が集まり、原油の先物価格は一時、およか月ぶりの安値水準まで下落しました。"
 answers = answers_paragraph.split("")
 
 words.each do |word|
@@ -65,3 +67,5 @@ lessons.each do |lesson|
     LessonWord.create! lesson_id: lesson.id, word_id: word.id, answer_id: answer.id
   end
 end
+
+Lesson.create! user_id: 1, category_id: 1

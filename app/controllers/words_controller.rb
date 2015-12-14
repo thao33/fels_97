@@ -4,12 +4,13 @@ class WordsController < ApplicationController
   def index
     setup_for_filter_box params
     if params[:commit].blank?
-      @words = Word.paginate(page: params[:page], per_page: PER_PAGE)
+      @words = Word.paginate page: params[:page], per_page: PER_PAGE
     else
-      @words = Word.search(params, current_user).paginate(page: params[:page], per_page: PER_PAGE)
+      @words = Word.search(params, current_user).
+                paginate page: params[:page], per_page: PER_PAGE
     end
-    @word_group1 = @words.slice(0,PER_PAGE/2)
-    @word_group2 = @words.slice(PER_PAGE/2,PER_PAGE)
+    @word_group1 = @words.slice 0,PER_PAGE/2
+    @word_group2 = @words.slice PER_PAGE/2,PER_PAGE
   end
 
   private

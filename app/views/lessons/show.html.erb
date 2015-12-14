@@ -1,0 +1,20 @@
+<section id="lesson">
+  <% if @show_result == true %>
+    <%= render "lessons/result", {lesson_words: @lesson_words} %>
+  <% else %>
+    <div class="row">
+      <div class="learning-word col-md-3 col-md-offset-2">
+        <h1><%= @word.ja %></h1>
+        <h3 class="result"></h3>
+        <%= hidden_field_tag "word_number", @word_number %>
+      </div>
+      <div class="learning-answers col-md-3">
+        <%= render "lessons/answers",
+            {word: @word, word_number: @word_number, words_total: Lesson::QUESTION_BLOCK} %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Finish", lesson_result_path(params[:id]), class: "btn btn-block btn-warning" %>
+      </div>
+    </div>
+  <% end %>
+</section>

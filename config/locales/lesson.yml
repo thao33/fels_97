@@ -1,0 +1,14 @@
+en:
+  lesson:
+    check:
+      class:
+        success: "btn btn-success"
+        failed: "btn btn-danger"
+      message:
+        success: "Congratulation!"
+        failed: "Wrong! Learn again"
+    form:
+      title:
+        categories: "Categories"
+      button:
+        filter: "Filter"

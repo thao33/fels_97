@@ -1,0 +1,16 @@
+<div class="row">
+  <h4><%= @lesson.category_name %></h4>
+  <p>Correct answers: <%= progress_tag @count, Lesson::QUESTION_BLOCK %></p>
+</div>
+
+<% lesson_words.each do |word| %>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2"><%= word.ja %></div>
+    <div class="col-md-3"><%= word.correct_answer %></div>
+    <div class="col-md-1">
+      <% @class = (word.answer and word.answer.correct) ?
+                  "btn btn-block btn-success" : "btn btn-block btn-danger" %>
+      <div class="<%= @class %>"></div>
+    </div>
+  </div>
+<% end %>
