@@ -1,0 +1,17 @@
+<section>
+  <%= form_tag admin_word_path, method: :patch do %>
+    <%= label_tag "japanese" %>
+    <%= text_field_tag :ja, @word.ja %>
+
+    <%= label_tag "category" %>
+    <%= select_tag "category",
+    options_from_collection_for_select(@categories, "id", "name", @word.category_id) %>
+
+    <%= label_tag "answers" %>
+    <% @word.answers.each do |answer| %>
+      <%= text_field_tag "answers[#{answer.id}]", answer.answer %>
+    <% end %>
+
+    <%= submit_tag "Update" , class: "btn btn-block btn-primary" %>
+  <% end %>
+</section>

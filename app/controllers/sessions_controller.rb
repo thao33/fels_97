@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user
+      if user.is_admin?
+        redirect_to admin_words_path
+      else
+        redirect_to user
+      end
     else
       flash.now[:danger] = I18n.t 'email_password.invalid'
       render 'new'

@@ -11,7 +11,7 @@ class Word < ActiveRecord::Base
     and answer_id IS NOT NULL)"
 
   belongs_to :category
-  has_many :answers
+  has_many :answers, dependent: :destroy
 
   scope :by_category, ->(category_id){where category_id: category_id}
   scope :learned, ->(user_id){where LEARNED_WORDS_QUERY, user_id: user_id}
@@ -50,5 +50,13 @@ class Word < ActiveRecord::Base
 
   def correct_answer
     answers.correct_answer.first.answer
+  end
+
+  def update_word_and_answers params
+    update_attributes! ja: params[:ja], category_id: params[:category]
+    params[:answers].each do |id, answer_update|
+      answer = Answer.find id
+      answer.update_attributes! answer: answer_update
+    end
   end
 end

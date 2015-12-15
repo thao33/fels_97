@@ -1,0 +1,7 @@
+en:
+  admin:
+    button:
+      delete: "<span class='glyphicon glyphicon-trash'></span>"
+      show: "<span class='glyphicon glyphicon-eye-open'></span>"
+      edit: "<span class='glyphicon glyphicon-wrench'></span>"
+      new: "<span class='glyphicon glyphicon-plus'></span>"

@@ -16,4 +16,9 @@ Rails.application.routes.draw do
   resources :lessons, only: [:new, :create, :show, :update] do
     get "result" => "lessons#show", defaults: {type: "result"}
   end
+
+  namespace :admin do
+    resources :words
+    resources :lessons
+  end
 end
