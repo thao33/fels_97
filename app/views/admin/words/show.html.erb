@@ -1,0 +1,25 @@
+<section>
+  <div class="row">
+    <span class="col-md-1">
+      <%= link_to raw(t('admin.button.edit')), edit_admin_word_path(@word) %>
+    </span>
+    <span class="col-md-1">
+      <%= link_to raw(t('admin.button.delete')), admin_word_path(@word), {method: :delete} %>
+    </span>
+  </div>
+  <div>
+    <p><%= t("admin.form.title.ja") %>: <%= @word.ja %></p>
+    <p><%= t("admin.form.title.answer") %>: <%= @word.correct_answer %></p>
+    <p>
+      <%= t("admin.form.title.answers") %>
+      <% @word.answers.each do |a| %>
+        <%= a.answer %>
+      <% end %>
+    </p>
+  </div>
+  <div class="row">
+    <p class="col-md-2">
+      <%= link_to t("admin.button.back_to_index"), admin_words_path, class: "btn btn-info" %>
+    </p>
+  </div>
+</section>

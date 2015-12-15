@@ -11,7 +11,11 @@ class Word < ActiveRecord::Base
     and answer_id IS NOT NULL)"
 
   belongs_to :category
-  has_many :answers
+  has_many :answers, dependent: :destroy
+  has_many :lesson_words, dependent: :destroy
+  accepts_nested_attributes_for :answers, limit: 4
+
+  validates :ja, presence: true
 
   scope :by_category, ->(category_id){where category_id: category_id}
   scope :learned, ->(user_id){where LEARNED_WORDS_QUERY, user_id: user_id}

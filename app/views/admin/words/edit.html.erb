@@ -1,0 +1,13 @@
+<section>
+  <%= form_for [:admin, @word] do |f| %>
+    <%= render 'admin/words/word', {word: @word, f: f} %>
+    <div class="row">
+      <p class="col-md-2 col-md-offset-3">
+        <%= link_to t("admin.button.back_to_show"), admin_word_path(@word), class: "btn btn-info" %>
+      </p>
+      <p class="col-md-2">
+        <%= submit_tag t("admin.button.update") , class: "btn btn-primary" %>
+      </p>
+    </div>
+  <% end %>
+</section>

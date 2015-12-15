@@ -18,4 +18,8 @@ Rails.application.routes.draw do
     get "result" => "lessons#show", defaults: {type: "result"}
   end
   resources :categories
+
+  namespace :admin do
+    resources :words
+  end
 end
