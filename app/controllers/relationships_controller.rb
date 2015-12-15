@@ -4,7 +4,7 @@ class RelationshipsController < ApplicationController
     @user = User.find params[:user_id]
     type = params[:type]
     @title = I18n.t "profile.title.#{type}"
-    @follow_rels = @user.send(type)
+    @follow_rels = @user.send type
     render "users/show"
   end
 

@@ -1,0 +1,12 @@
+<ol>
+  <% word.answers.each_with_index do |answer, index| %>
+    <p>
+      <%= button_to answer.answer, lesson_path(word_id: word, answer_id: answer.id, answer_index: "answer_#{index}", word_number: word_number, check: true),
+        {:remote => true, id: "answer_#{index}", class: "btn btn-primary", method: :patch}
+     %>
+     </p>
+  <% end %>
+</ol>
+<div class="row">
+  <h3><%= progress_tag (word_number + 1), words_total %></h3>
+</div>

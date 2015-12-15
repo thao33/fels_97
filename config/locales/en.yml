@@ -51,3 +51,12 @@ en:
     dratf2: "number2"
     dratf3: "number3"
     dratf4: "now"
+  home:
+    title:
+      contact: "Contact"
+      about: "About"
+      profile: "Profile"
+      login: "Register/Login"
+      logout: "Logout"
+    header:
+      title: "Framgia E-learning System"

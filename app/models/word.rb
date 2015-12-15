@@ -7,14 +7,15 @@ class Word < ActiveRecord::Base
     where user_id = :user_id))"
   LEARNED_WORDS_QUERY = "id in
     (SELECT word_id from lesson_words
-    where #{BY_LESSON_QUERY})"
+    where #{BY_LESSON_QUERY}
+    and answer_id IS NOT NULL)"
 
   belongs_to :category
   has_many :answers
 
   scope :by_category, ->(category_id){where category_id: category_id}
   scope :learned, ->(user_id){where LEARNED_WORDS_QUERY, user_id: user_id}
-  scope :not_learned, ->(user_id){where.not LEARNED_WORDS_QUERY, user_id: user_id}
+  scope :not_learned, ->(user_id){where.not(LEARNED_WORDS_QUERY, user_id: user_id)}
 
   class << self
     def all_status
@@ -40,6 +41,10 @@ class Word < ActiveRecord::Base
 
     def filter_by_status? status
       status and status.to_i != ALL_WORDS
+    end
+
+    def not_learned_category category_id, user_id
+      self.by_category(category_id).send("not_learned", user_id)
     end
   end
 
