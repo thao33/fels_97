@@ -1,10 +1,13 @@
+# Create admin
+User.create! name: "admin", email: "admin@framgia.com", password: "secret",
+              password_confirmation: "secret", is_admin: true
 # Create users
 10.times do |n|
   name = Faker::Name.name
   email = Faker::Internet.email
   password = "secret"
-
-  User.create! name: name, email: email, password: password, password_confirmation: password
+  User.create! name: name, email: email, password: password,
+              password_confirmation: password, is_admin: false
 end
 
 category_list = [
@@ -22,16 +25,6 @@ category_list = [
 
 category_list.each do |name, description|
   Category.create( name: name, description: description )
-end
-
-# Create lessons
-categories = Category.all
-users = User.all
-
-categories.each do |category|
-  users.each do |user|
-    Lesson.create! category_id: category.id, user_id: user.id
-  end
 end
 
 # Create words
@@ -79,4 +72,5 @@ lessons.each do |lesson|
   end
 end
 
+# Create lesson
 Lesson.create! user_id: 1, category_id: 1

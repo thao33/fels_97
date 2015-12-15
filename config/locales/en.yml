@@ -58,6 +58,9 @@ en:
       profile: "Profile"
       login: "Register/Login"
       logout: "Logout"
+      admin:
+        words: "Words"
+        lessons: "Lessons"
     header:
       title: "Framgia E-learning System"
   category:
