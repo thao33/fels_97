@@ -1,10 +1,17 @@
 class LessonsController < ApplicationController
-  before_action :load_data
+  before_action :load_data, except: [:new, :create]
 
   def new
   end
 
   def create
+    category_id = params[:lesson][:category_id]
+    lesson = Lesson.new(category_id: category_id, user_id: current_user.id)
+    if lesson.save
+      redirect_to lesson_path(lesson)
+    else
+      redirect_to categories_path
+    end
   end
 
   def show

@@ -7,10 +7,10 @@
     <%= a.text_field :answer %>
     <div class="col-md-3">
       <%= a.label :correct, t("admin.form.check_box.false") %>
-      <%= a.radio_button :correct, false , :checked => true , :value => false %>
+      <%= a.radio_button :correct, false , checked: true , value: false %>
       <span>
       <%= a.label :correct, t("admin.form.check_box.true") %>
-      <%= a.radio_button :correct, true, :value => true%>
+      <%= a.radio_button :correct, true, value: true %>
       </span>
     </div>
   </div>

@@ -7,8 +7,9 @@ en:
       new: "<span class='glyphicon glyphicon-plus'></span>"
       update: "Update"
       back_to_show: "Back to show"
-      back_to_index: "Back to word list"
+      back_to_words: "Back to word list"
       create_word: "Create new word"
+      back_to_lessons: "Back to lesson list"
     form:
       title:
         ja: "Japanese"
@@ -19,3 +20,9 @@ en:
         false: "False"
     error:
       blank: "Please fill blank fields!"
+    lesson:
+      index:
+        user_name: "User name: "
+        category: "Categor:y: "
+        lesson_id: "Id: "
+        title: "All lessons"

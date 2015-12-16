@@ -12,5 +12,10 @@
                   "btn btn-block btn-success" : "btn btn-block btn-danger" %>
       <div class="<%= @class %>"></div>
     </div>
+    <% if current_user.is_admin? %>
+      <div>
+        <%= link_to raw(t("admin.button.edit")), admin_word_path(word) unless word.destroyed? %>
+      </div>
+    <% end %>
   </div>
 <% end %>

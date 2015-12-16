@@ -2,7 +2,7 @@ class Lesson < ActiveRecord::Base
   QUESTION_BLOCK = 20
   belongs_to :user
   belongs_to :category
-  has_many :lesson_words
+  has_many :lesson_words, dependent: :destroy
 
   after_create :create_lesson_words
 
@@ -24,5 +24,9 @@ class Lesson < ActiveRecord::Base
 
   def category_name
     category.name
+  end
+
+  def user_name
+    user.name
   end
 end

@@ -1,0 +1,37 @@
+<section>
+  <h3><%= t("admin.lesson.index.title") %></h3>
+  <div class="row">
+    <ul>
+      <% @lessons.each do |lesson| %>
+        <li class="col-md-12">
+          <p class="col-md-1">
+            <%= t("admin.lesson.index.lesson_id") %>
+            <%= lesson.id %>
+          </p>
+          <span class="col-md-3">
+            <%= t("admin.lesson.index.category") %>
+            <%= lesson.category_name %>
+          </span>
+          <span class="col-md-3">
+            <%= t("admin.lesson.index.user_name") %>
+            <%= lesson.user_name %>
+          </span>
+          <span class="col-md-2">
+            <%= t("admin.lesson.index.correct_count") %>
+            <% count = lesson.correct_count lesson.lesson_words %>
+            <%= progress_tag count, Lesson::QUESTION_BLOCK %>
+          </span>
+          <span class="col-md-1">
+            <%= link_to raw(t('admin.button.show')), admin_lesson_path(lesson) %>
+          </span>
+          <span class="col-md-1">
+            <%= link_to raw(t('admin.button.edit')), edit_admin_lesson_path(lesson) %>
+          </span>
+          <span class="col-md-1">
+            <%= link_to raw(t('admin.button.delete')), admin_lesson_path(lesson), {method: :delete} %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

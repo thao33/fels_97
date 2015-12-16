@@ -1,0 +1,16 @@
+<section>
+  <%= render "lessons/result", {lesson_words: @lesson_words} %>
+  <div class="row">
+    <span class="col-md-1">
+      <%= link_to raw(t('admin.button.edit')), edit_admin_lesson_path(@lesson) %>
+    </span>
+    <span class="col-md-1">
+      <%= link_to raw(t('admin.button.delete')), admin_lesson_path(@lesson), {method: :delete} %>
+    </span>
+  </div>
+  <div class="row">
+    <p class="col-md-2">
+      <%= link_to t("admin.button.back_to_lessons"), admin_lessons_path, class: "btn btn-info" %>
+    </p>
+  </div>
+</section>
