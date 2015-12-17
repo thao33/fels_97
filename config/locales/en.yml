@@ -72,3 +72,7 @@ en:
   notifications:
     categories:
       create_succeed: "New category successfully created!"
+  logging:
+    admin:
+      logged_in: "Admin %{username} logged in"
+      logged_out: "Admin %{username} logged out"
