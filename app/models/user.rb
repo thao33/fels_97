@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
+  TEMP_EMAIL_PREFIX = "e-learning"
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   attr_accessor :remember_token
@@ -16,7 +22,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :be_followed, source: :follower
   has_many :lessons
 
-  validates :name,  presence: true, length: { maximum: 50 }
+  # validates :name,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: {maximum: 50},
                     format: {with: VALID_EMAIL_REGEX},
                     uniqueness: {case_sensitive: false}
@@ -27,7 +33,7 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
 
-  has_secure_password
+  # has_secure_password
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -76,5 +82,38 @@ class User < ActiveRecord::Base
 
   def followers_count
     followers.count
+  end
+
+  def self.find_for_oauth auth, signed_in_resource = nil
+    identity = Identity.find_for_oauth auth
+
+    user = signed_in_resource ? signed_in_resource : identity.user
+
+    if user.nil?
+      email_is_verified = auth.info.email and (auth.info.verified or auth.verified_email)
+      email = auth.info.email if email_is_verified
+      user = User.where(email: email).first if email
+      if user.nil?
+        name = auth.extra.raw_info.name
+        email = email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com"
+
+        user = User.new(
+          name: name,
+          email: email,
+          password: Devise.friendly_token[0, 20]
+        )
+        user.save!
+      end
+    end
+
+    if identity.user != user
+      identity.user = user
+      identity.save!
+    end
+    user
+  end
+
+  def email_verified?
+    self.email and self.email !~ VALID_EMAIL_REGEX
   end
 end
