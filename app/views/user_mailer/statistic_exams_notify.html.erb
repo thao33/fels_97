@@ -1,0 +1,13 @@
+<p>Hi <%= @user.name %>, </p>
+
+<p>We send you monthly statistic exams in <%= date_format_month_name %></p>
+
+<%= @exams.each do |lesson| %>
+  <h4><%= lesson.category_name %></h4>
+  <p>Correct answers:
+    <%= progress_tag lesson.correct_count(lesson.lesson_words), Lesson::QUESTION_BLOCK %>
+  </p>
+<% end %>
+
+<p>Many other lessons are created for you. Please check in the website.</p>
+<p>Best regard!</p>

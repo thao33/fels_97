@@ -28,11 +28,11 @@ end
 categories = Category.all
 users = User.all
 
-categories.each do |category|
-  users.each do |user|
-    Lesson.create! category_id: category.id, user_id: user.id
-  end
-end
+# categories.each do |category|
+#   users.each do |user|
+#     Lesson.create! category_id: category.id, user_id: user.id
+#   end
+# end
 
 # Create words
 words_paragraph = "週明け日の東京商品取引所は、世界的に原油の供給が需要を大幅に上回る状態が続くという

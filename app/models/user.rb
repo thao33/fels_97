@@ -118,4 +118,10 @@ class User < ActiveRecord::Base
   def email_verified?
     self.email and self.email !~ VALID_EMAIL_REGEX
   end
+
+  def monthly_exams
+    start_of_month = Time.now.beginning_of_month
+    end_of_month = Time.now.end_of_month
+    Lesson.monthly self.id, start_of_month, end_of_month
+  end
 end

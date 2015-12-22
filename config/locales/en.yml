@@ -69,6 +69,7 @@ en:
     subjects:
       new_category_notify: "Notify New Category"
       created_exam_not_start_notify: "Created exam not start"
+      statistic_exams_notify: "Monthly Statistic Exams"
   notifications:
     categories:
       create_succeed: "New category successfully created!"
