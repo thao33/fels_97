@@ -62,3 +62,12 @@ en:
       title: "Framgia E-learning System"
   category:
     start: "start"
+  errors:
+    categories:
+      create_failed: "Something's wrong. New category not created!"
+  mailers:
+    subjects:
+      new_category_notify: "Notify New Category"
+  notifications:
+    categories:
+      create_succeed: "New category successfully created!"
