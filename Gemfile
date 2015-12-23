@@ -28,6 +28,9 @@ gem "bootstrap-will_paginate"
 gem "bcrypt", "~> 3.1.7"
 
 gem "paperclip"
+
+gem "delayed_job_active_record"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
