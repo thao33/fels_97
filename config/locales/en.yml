@@ -68,6 +68,7 @@ en:
   mailers:
     subjects:
       new_category_notify: "Notify New Category"
+      created_exam_not_start_notify: "Created exam not start"
   notifications:
     categories:
       create_succeed: "New category successfully created!"

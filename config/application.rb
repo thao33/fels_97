@@ -6,6 +6,11 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+env_file = File.expand_path("../local_env", __FILE__)
+YAML.load(File.read(env_file)).each do |key, value|
+  ENV[key.to_s] = value
+end if File.exists?(env_file)
+
 module Fels97
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -20,15 +25,12 @@ module Fels97
     config.i18n.default_locale = :en
 
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.autoload_paths << Rails.root.join("services")
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths += Dir["#{config.root}/app/services/"]
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.before_configuration do
-      env_file = File.join(Rails.root, "config", "local_env.yml")
-      YAML.load(File.open(env_file)).each do |key, value|
-        ENV[key.to_s] = value
-      end if File.exists?(env_file)
-    end
+
+    config.active_job.queue_adapter = :delayed_job
   end
 end
