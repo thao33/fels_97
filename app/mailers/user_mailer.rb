@@ -16,4 +16,10 @@ class UserMailer < ApplicationMailer
     @exams = user.monthly_exams
     mail to: user.email, subject: I18n.t("mailers.subjects.statistic_exams_notify")
   end
+
+  def send_exam_result_when_finish user, lesson
+    @user = user
+    @lesson = lesson
+    mail to: @user.email, subject: I18n.t("mailers.subjects.send_exam_result")
+  end
 end

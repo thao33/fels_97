@@ -48,7 +48,10 @@ class LessonsController < ApplicationController
   def end_lesson_condition
     @check_word_number = params[:word_number].to_i + 1
     @show_result = @check_word_number == Lesson::QUESTION_BLOCK
-
+    if @show_result
+      user_id = current_user.id
+      ExamWorker.perform_async user_id, @lesson.id
+    end
     # Show the proress if show the result
     @count = @lesson.correct_count @lesson_words if @show_result
     @word_number = @check_word_number

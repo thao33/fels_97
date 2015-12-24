@@ -1,0 +1,28 @@
+<p>Hi <%= @user.name %>, </p>
+
+<p>We send you the exam's result of lesson <%= @lesson.category_name %></p>
+
+<p>
+  <h4><%= @lesson.category_name %></h4>
+  <p>Correct answers:
+    <%= progress_tag @lesson.correct_count(@lesson.lesson_words), Lesson::QUESTION_BLOCK %>
+  </p>
+  <div class="row">
+    <% @lesson.lesson_words.each do |word| %>
+      <div class="col-md-3">
+        <%= word.ja %>
+      </div>
+      <div class="col-md-3">
+        <%= word.correct_answer %>
+      </div>
+      <div class="col-md-3">
+        <% @class = (word.answer and word.answer.correct) ?
+                    "btn btn-block btn-success" : "btn btn-block btn-danger" %>
+        <div class="<%= @class %>"></div>
+      </div>
+    <% end %>
+  </div>
+</p>
+
+<p>Many other lessons are created for you. Please check in the website.</p>
+<p>Best regard!</p>
