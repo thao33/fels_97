@@ -5,6 +5,9 @@ class Lesson < ActiveRecord::Base
   has_many :lesson_words
 
   after_create :create_lesson_words
+  scope :monthly, ->(user_id, start_of_month, end_of_month){
+                    where created_at: start_of_month..end_of_month,
+                    user_id: user_id}
 
   def create_lesson_words
     words = Word.not_learned_category self.category_id, self.user_id

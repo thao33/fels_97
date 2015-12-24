@@ -7,7 +7,7 @@ class NewCategoryNotifyService
 
   def notify
     @users.each do |user|
-      UserMailer.new_category_notify(user, @category).delivery_now
+      UserMailer.new_category_notify(user, @category).deliver_now
     end
   end
 end

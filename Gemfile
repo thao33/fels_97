@@ -34,6 +34,7 @@ gem "devise"
 gem "omniauth"
 gem "omniauth-twitter"
 gem "omniauth-facebook"
+gem "whenever", require: false
 
 # Use Unicorn as the app server
 # gem 'unicorn'
