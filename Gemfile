@@ -30,6 +30,10 @@ gem "bcrypt", "~> 3.1.7"
 gem "paperclip"
 
 gem "delayed_job_active_record"
+gem "devise"
+gem "omniauth"
+gem "omniauth-twitter"
+gem "omniauth-facebook"
 
 # Use Unicorn as the app server
 # gem 'unicorn'

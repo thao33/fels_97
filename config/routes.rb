@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   root 'static_pages#home'
   get 'home' => 'static_pages#home'
   get 'about' => 'static_pages#about'
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
   get 'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
+  get "/auth/:provider/callback" => "sessions#create"
+  get "/auth/failure" => "sessions#failure"
   get    'logout'  => 'sessions#destroy'
 
   resources :users do
